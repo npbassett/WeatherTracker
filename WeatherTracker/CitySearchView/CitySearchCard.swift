@@ -14,10 +14,8 @@ struct CitySearchCard: View {
         VStack {
             HStack {
                 VStack {
-                    Text(weatherResponse.location.name)
-                        .font(.system(size: 20))
-                    Text("\(Int(weatherResponse.current.temp_c)) °")
-                        .font(.system(size: 60))
+                    WeatherTrackerText(text: weatherResponse.location.name, size: .medium)
+                    WeatherTrackerText(text: "\(Int(weatherResponse.current.temp_c)) °", size: .xlarge)
                 }
                 
                 Spacer()

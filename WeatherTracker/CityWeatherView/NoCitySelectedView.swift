@@ -11,9 +11,9 @@ import SwiftUI
 
 struct NoCitySelectedView: View {
     var body: some View {
-        VStack {
-            Text("No City Selected").font(.title)
-            Text("Please search for a city")
+        VStack(spacing: 8) {
+            WeatherTrackerText(text: "No City Selected", size: .large)
+            WeatherTrackerText(text: "Please search for a city", size: .small)
         }
     }
 }

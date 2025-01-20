@@ -14,11 +14,11 @@ struct ErrorView: View {
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: "exclamationmark.triangle")
-            Text(errorMessage)
+            WeatherTrackerText(text: errorMessage, size: .small)
             
             if let refresh = refresh {
                 Button(action: refresh) {
-                    Text("Refresh")
+                    WeatherTrackerText(text: "Refresh", size: .small)
                 }
                 .buttonStyle(.bordered)
             }

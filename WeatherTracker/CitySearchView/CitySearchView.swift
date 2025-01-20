@@ -18,7 +18,7 @@ struct CitySearchView: View {
                     onTap(weatherResponse.location.name)
                 }
         } else {
-            Text("")
+            EmptyView()
         }
     }
 }

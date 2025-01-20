@@ -13,9 +13,9 @@ struct WeatherValueStack: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            Text(title)
+            WeatherTrackerText(text: title, size: .small)
                 .foregroundStyle(Color.CityWeatherSubviewTitleText)
-            Text(value)
+            WeatherTrackerText(text: value, size: .small)
                 .foregroundStyle(Color.CityWeatherSubviewValueText)
         }
     }

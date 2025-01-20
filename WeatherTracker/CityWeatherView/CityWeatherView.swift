@@ -21,8 +21,8 @@ struct CityWeatherView: View {
                 
                 VStack(spacing: 24) {
                     WeatherIconView(iconLocation: weatherResponse.current.condition.icon)
-                    Text("\(weatherResponse.location.name) \(Image(systemName: "location.fill"))").font(.system(size: 30))
-                    Text("\(Int(weatherResponse.current.temp_c))°").font(.system(size: 70))
+                    Text("\(weatherResponse.location.name) \(Image(systemName: "location.fill"))").font(.custom("Poppins-Regular", size: 30))
+                    WeatherTrackerText(text: "\(Int(weatherResponse.current.temp_c))°", size: .xxlarge)
                 }
                 .padding(16)
                 
