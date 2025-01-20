@@ -21,9 +21,10 @@ protocol WeatherProvider {
 class WeatherViewModel: ObservableObject {
     private var savedCity: String?
     private var weatherProvider: WeatherProvider
-    @Published var weatherResponse: WeatherResponse?
-    @Published var viewSelection: ViewSelection
+    @Published var savedCityWeatherResponse: WeatherResponse?
+    @Published var searchWeatherResponse: WeatherResponse?
     @Published var isFetchingWeather = false
+    @Published var isErrorFetchingWeather = false
     
     static let USER_DEFAULTS_KEY = "SAVED_CITY"
     
@@ -31,15 +32,38 @@ class WeatherViewModel: ObservableObject {
 //        self.savedCity = UserDefaults.standard.string(forKey: Self.USER_DEFAULTS_KEY)
         self.savedCity = "Denver"
         self.weatherProvider = weatherProvider
-        guard let savedCity = savedCity else {
-            self.viewSelection = .noCitySelected
+        Task {
+            await fetchWeatherForSavedCity()
+        }
+    }
+    
+    func getWeatherFromProvider(for city: String) async -> WeatherResponse? {
+        self.isFetchingWeather = true
+        self.isErrorFetchingWeather = false
+        do {
+            self.isFetchingWeather = false
+            return try await weatherProvider.getCurrentWeather(for: city)
+        } catch {
+            if let networkError = error as? NetworkError {
+                print("Error retrieving weather: \(networkError.rawValue)")
+            } else {
+                print("Error retrieving weather: \(error.localizedDescription)")
+            }
+            self.isFetchingWeather = false
+            self.isErrorFetchingWeather = true
+            return nil
+        }
+    }
+    
+    func fetchWeatherForSavedCity() async {
+        guard let savedCity = self.savedCity else {
             return
         }
-        self.viewSelection = .citySelected
-        self.isFetchingWeather = true
-        Task {
-            self.weatherResponse = try? await weatherProvider.getCurrentWeather(for: savedCity)
-            self.isFetchingWeather = false
-        }
+        
+        self.savedCityWeatherResponse = await getWeatherFromProvider(for: savedCity)
+    }
+    
+    func performSearch(searchText: String) async {
+        self.searchWeatherResponse = await getWeatherFromProvider(for: searchText)
     }
 }

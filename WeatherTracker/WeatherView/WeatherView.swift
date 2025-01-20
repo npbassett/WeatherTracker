@@ -13,16 +13,18 @@ struct WeatherView: View {
     
     var body: some View {
         NavigationStack {
-            switch viewModel.viewSelection {
-            case .noCitySelected:
-                NoCitySelectedView()
-            case .citySelected:
-                CityWeatherView(weatherResponse: TEST_WEATHER_RESPONSE)
-            case .searchingForCity:
-                ContentView()
+            if searchText.isEmpty {
+                CityWeatherView(weatherResponse: viewModel.savedCityWeatherResponse)
+            } else {
+                CitySearchView(weatherResponse: viewModel.searchWeatherResponse)
             }
         }
         .searchable(text: $searchText, prompt: "Search Location")
+        .onChange(of: searchText) {
+            Task {
+                await viewModel.performSearch(searchText: searchText)
+            }
+        }
     }
 }
 

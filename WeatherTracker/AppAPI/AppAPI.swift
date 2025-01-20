@@ -17,23 +17,13 @@ class AppAPI: WeatherProvider {
     }
     
     func getCurrentWeather(for city: String) async throws -> WeatherResponse? {
-        do {
-            guard let requestURL = Self.constructRequestURL(city: city) else {
-                throw NetworkError.invalidURL
-            }
-            let (data, _) = try await URLSession.shared.data(from: requestURL)
-            guard let decodedData = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
-                throw NetworkError.failedToDecodeData
-            }
-            return decodedData
-        } catch let error {
-            if let networkError = error as? NetworkError {
-                print("Error retrieving weather for \(city): \(networkError.rawValue)")
-            } else {
-                print("Error retrieving weather for \(city): \(error.localizedDescription)")
-            }
+        guard let requestURL = Self.constructRequestURL(city: city) else {
+            throw NetworkError.invalidURL
         }
-        
-        return nil
+        let (data, _) = try await URLSession.shared.data(from: requestURL)
+        guard let decodedData = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
+            throw NetworkError.failedToDecodeData
+        }
+        return decodedData
     }
 }
