@@ -1,5 +1,5 @@
 //
-//  AppAPI.swift
+//  WeatherProviderAPI.swift
 //  WeatherTracker
 //
 //  Created by Neil Bassett on 1/20/25.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class AppAPI: WeatherProvider {
+class WeatherProviderAPI: WeatherProvider {
     static let key = "fbd4b585504e436d9dc182137252001"
     static let baseURL = "https://api.weatherapi.com/v1/current.json"
     

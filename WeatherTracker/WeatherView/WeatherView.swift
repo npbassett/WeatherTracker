@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @StateObject var viewModel = WeatherViewModel(weatherProvider: AppAPI())
+    @ObservedObject var viewModel: WeatherViewModel
     @State private var searchText = ""
     
     var body: some View {
@@ -38,5 +38,5 @@ struct WeatherView: View {
 }
 
 #Preview {
-    WeatherView()
+    WeatherView(viewModel: WeatherViewModel(weatherProvider: WeatherProviderAPI()))
 }
