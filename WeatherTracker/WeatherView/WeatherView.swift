@@ -30,6 +30,10 @@ struct WeatherView: View {
         }
         .searchable(text: $searchText, prompt: "Search Location")
         .onChange(of: searchText) {
+            guard !searchText.isEmpty else {
+                return
+            }
+            
             Task {
                 await viewModel.performSearch(searchText: searchText)
             }

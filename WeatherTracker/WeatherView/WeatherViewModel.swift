@@ -29,8 +29,7 @@ class WeatherViewModel: ObservableObject {
     static let USER_DEFAULTS_KEY = "SAVED_CITY"
     
     init(weatherProvider: WeatherProvider) {
-//        self.savedCity = UserDefaults.standard.string(forKey: Self.USER_DEFAULTS_KEY)
-        self.savedCity = "Denver"
+        self.savedCity = UserDefaults.standard.string(forKey: Self.USER_DEFAULTS_KEY)
         self.weatherProvider = weatherProvider
         Task {
             await fetchWeatherForSavedCity()
@@ -71,9 +70,7 @@ class WeatherViewModel: ObservableObject {
     func updateSavedCity(with newSavedCity: String) {
         self.savedCity = newSavedCity
         UserDefaults.standard.setValue(newSavedCity, forKey: Self.USER_DEFAULTS_KEY)
-        Task {
-            await fetchWeatherForSavedCity()
-        }
+        refreshWeather()
     }
     
     func refreshWeather() {
