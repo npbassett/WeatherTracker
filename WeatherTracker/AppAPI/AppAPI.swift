@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class AppAPI {
+class AppAPI: WeatherProvider {
     static let key = "fbd4b585504e436d9dc182137252001"
     static let baseURL = "https://api.weatherapi.com/v1/current.json"
     
@@ -16,9 +16,9 @@ class AppAPI {
         return URL(string: "\(baseURL)?key=\(key)&q=\(city)&aqi=no")
     }
     
-    static func getCurrentWeather(for city: String) async throws -> WeatherResponse? {
+    func getCurrentWeather(for city: String) async throws -> WeatherResponse? {
         do {
-            guard let requestURL = constructRequestURL(city: city) else {
+            guard let requestURL = Self.constructRequestURL(city: city) else {
                 throw NetworkError.invalidURL
             }
             let (data, _) = try await URLSession.shared.data(from: requestURL)

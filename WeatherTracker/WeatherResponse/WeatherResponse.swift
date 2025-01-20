@@ -28,3 +28,5 @@ struct Condition: Codable {
     let text: String
     let icon: String
 }
+
+let TEST_WEATHER_RESPONSE = WeatherResponse(location: WeatherLocation(name: "Denver"), current: CurrentWeather(temp_c: 0, feelslike_c: 0, humidity: 50, uv: 1.0, condition: Condition(text: "Partly cloudy", icon: "//cdn.weatherapi.com/weather/64x64/day/116.png")))

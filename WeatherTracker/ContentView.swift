@@ -16,12 +16,12 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
-        .onTapGesture {
-            Task {
-                let weatherResponse = try await AppAPI.getCurrentWeather(for: "Denver")
-                print("Denver temp = \(weatherResponse?.current.temp_c)")
-            }
-        }
+//        .onTapGesture {
+//            Task {
+//                let weatherResponse = try await AppAPI.getCurrentWeather(for: "Denver")
+//                print("Denver temp = \(weatherResponse?.current.temp_c)")
+//            }
+//        }
     }
 }
 
