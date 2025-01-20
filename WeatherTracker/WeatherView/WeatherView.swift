@@ -16,7 +16,10 @@ struct WeatherView: View {
             if searchText.isEmpty {
                 CityWeatherView(weatherResponse: viewModel.savedCityWeatherResponse)
             } else {
-                CitySearchView(weatherResponse: viewModel.searchWeatherResponse)
+                CitySearchView(weatherResponse: viewModel.searchWeatherResponse) { newSavedCity in
+                    viewModel.updateSavedCity(with: newSavedCity)
+                    searchText = ""
+                }
             }
         }
         .searchable(text: $searchText, prompt: "Search Location")

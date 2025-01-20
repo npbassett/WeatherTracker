@@ -9,10 +9,14 @@ import SwiftUI
 
 struct CitySearchView: View {
     var weatherResponse: WeatherResponse?
+    var onTap: (String) -> ()
     
     var body: some View {
         if let weatherResponse = weatherResponse {
             CitySearchCard(weatherResponse: weatherResponse)
+                .onTapGesture {
+                    onTap(weatherResponse.location.name)
+                }
         } else {
             Text("")
         }
@@ -20,5 +24,5 @@ struct CitySearchView: View {
 }
 
 #Preview {
-    CitySearchView(weatherResponse: TEST_WEATHER_RESPONSE)
+    CitySearchView(weatherResponse: TEST_WEATHER_RESPONSE, onTap: { _ in })
 }

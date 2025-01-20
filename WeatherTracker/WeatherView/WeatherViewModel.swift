@@ -66,4 +66,12 @@ class WeatherViewModel: ObservableObject {
     func performSearch(searchText: String) async {
         self.searchWeatherResponse = await getWeatherFromProvider(for: searchText)
     }
+    
+    func updateSavedCity(with newSavedCity: String) {
+        self.savedCity = newSavedCity
+        UserDefaults.standard.setValue(newSavedCity, forKey: Self.USER_DEFAULTS_KEY)
+        Task {
+            await fetchWeatherForSavedCity()
+        }
+    }
 }
