@@ -10,6 +10,9 @@ import SwiftUI
 struct WeatherIconView: View {
     var iconLocation: String
     
+    static let IMAGE_WIDTH: CGFloat = 123
+    static let IMAGE_HEIGHT: CGFloat = 113
+    
     var url: URL? {
         return URL(string: "https:" + iconLocation)
     }

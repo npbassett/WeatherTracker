@@ -7,33 +7,38 @@
 
 import SwiftUI
 
+extension Color {
+    static let test = Color.fromHex
+}
+
 struct CityWeatherView: View {
     var weatherResponse: WeatherResponse?
     
     var body: some View {
         if let weatherResponse = weatherResponse {
             VStack {
-                WeatherIconView(iconLocation: weatherResponse.current.condition.icon)
+                Spacer()
                 
-                Text("\(weatherResponse.location.name) \(Image(systemName: "location.fill"))")
-                Text("\(Int(weatherResponse.current.temp_c)) °")
-                
-                HStack {
-                    VStack {
-                        Text("Humidity")
-                        Text(String(weatherResponse.current.humidity) + "%")
-                    }
-                    
-                    VStack {
-                        Text("UV")
-                        Text(String(weatherResponse.current.uv))
-                    }
-                    
-                    VStack {
-                        Text("Feels Like")
-                        Text(String(weatherResponse.current.feelslike_c) + " °")
-                    }
+                VStack(spacing: 24) {
+                    WeatherIconView(iconLocation: weatherResponse.current.condition.icon)
+                    Text("\(weatherResponse.location.name) \(Image(systemName: "location.fill"))").font(.system(size: 30))
+                    Text("\(Int(weatherResponse.current.temp_c))°").font(.system(size: 70))
                 }
+                .padding(16)
+                
+                HStack(spacing: 56) {
+                    WeatherValueStack(title: "Humidity", value: String(weatherResponse.current.humidity) + "%")
+                    
+                    WeatherValueStack(title: "UV", value: String(weatherResponse.current.uv))
+                    
+                    WeatherValueStack(title: "Feels Like", value: "\(weatherResponse.current.feelslike_c)°")
+                }
+                .padding(16)
+                .background(Color.Background)
+                .cornerRadius(16)
+                
+                Spacer()
+                Spacer()
             }
         } else {
             NoCitySelectedView()

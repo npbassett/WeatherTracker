@@ -11,14 +11,26 @@ struct CitySearchCard: View {
     var weatherResponse: WeatherResponse
     
     var body: some View {
-        HStack {
-            VStack {
-                Text(weatherResponse.location.name)
-                Text("\(Int(weatherResponse.current.temp_c)) °")
+        VStack {
+            HStack {
+                VStack {
+                    Text(weatherResponse.location.name)
+                        .font(.system(size: 20))
+                    Text("\(Int(weatherResponse.current.temp_c)) °")
+                        .font(.system(size: 60))
+                }
+                
+                Spacer()
+                
+                WeatherIconView(iconLocation: weatherResponse.current.condition.icon)
             }
+            .padding(16)
+            .background(Color.Background)
+            .cornerRadius(16)
             
-            WeatherIconView(iconLocation: weatherResponse.current.condition.icon)
+            Spacer()
         }
+        .padding(16)
     }
 }
 
