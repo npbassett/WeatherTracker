@@ -13,13 +13,19 @@ struct WeatherView: View {
     
     var body: some View {
         NavigationStack {
-            if searchText.isEmpty {
-                CityWeatherView(weatherResponse: viewModel.savedCityWeatherResponse)
-            } else {
+            if !searchText.isEmpty {
                 CitySearchView(weatherResponse: viewModel.searchWeatherResponse) { newSavedCity in
                     viewModel.updateSavedCity(with: newSavedCity)
                     searchText = ""
                 }
+            } else if viewModel.isFetchingWeather {
+                ProgressView()
+            } else if viewModel.isErrorFetchingWeather {
+                ErrorView(errorMessage: "Unable to retrieve weather") {
+                    viewModel.refreshWeather()
+                }
+            } else {
+                CityWeatherView(weatherResponse: viewModel.savedCityWeatherResponse)
             }
         }
         .searchable(text: $searchText, prompt: "Search Location")

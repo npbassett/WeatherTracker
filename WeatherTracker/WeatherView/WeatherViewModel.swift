@@ -37,12 +37,13 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func getWeatherFromProvider(for city: String) async -> WeatherResponse? {
+    private func getWeatherFromProvider(for city: String) async -> WeatherResponse? {
         self.isFetchingWeather = true
         self.isErrorFetchingWeather = false
         do {
+            let currentWeather = try await weatherProvider.getCurrentWeather(for: city)
             self.isFetchingWeather = false
-            return try await weatherProvider.getCurrentWeather(for: city)
+            return currentWeather
         } catch {
             if let networkError = error as? NetworkError {
                 print("Error retrieving weather: \(networkError.rawValue)")
@@ -55,7 +56,7 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func fetchWeatherForSavedCity() async {
+    private func fetchWeatherForSavedCity() async {
         guard let savedCity = self.savedCity else {
             return
         }
@@ -70,6 +71,12 @@ class WeatherViewModel: ObservableObject {
     func updateSavedCity(with newSavedCity: String) {
         self.savedCity = newSavedCity
         UserDefaults.standard.setValue(newSavedCity, forKey: Self.USER_DEFAULTS_KEY)
+        Task {
+            await fetchWeatherForSavedCity()
+        }
+    }
+    
+    func refreshWeather() {
         Task {
             await fetchWeatherForSavedCity()
         }

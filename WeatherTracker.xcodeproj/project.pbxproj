@@ -25,6 +25,7 @@
 		5177C0B12D3EE9E300BF51C4 /* WeatherIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0B02D3EE9E300BF51C4 /* WeatherIconView.swift */; };
 		5177C0B82D3EFD0E00BF51C4 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0B72D3EFD0E00BF51C4 /* Color+Extensions.swift */; };
 		5177C0BC2D3F009E00BF51C4 /* WeatherValueStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0BB2D3F009E00BF51C4 /* WeatherValueStack.swift */; };
+		5177C0BE2D3F04BB00BF51C4 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0BD2D3F04BB00BF51C4 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		5177C0B02D3EE9E300BF51C4 /* WeatherIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconView.swift; sourceTree = "<group>"; };
 		5177C0B72D3EFD0E00BF51C4 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		5177C0BB2D3F009E00BF51C4 /* WeatherValueStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherValueStack.swift; sourceTree = "<group>"; };
+		5177C0BD2D3F04BB00BF51C4 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			children = (
 				5177C0B02D3EE9E300BF51C4 /* WeatherIconView.swift */,
 				5177C0BB2D3F009E00BF51C4 /* WeatherValueStack.swift */,
+				5177C0BD2D3F04BB00BF51C4 /* ErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				5177C09C2D3ED41400BF51C4 /* NetworkError.swift in Sources */,
 				5177C0A92D3EDF2200BF51C4 /* CityWeatherView.swift in Sources */,
 				5177C0AC2D3EE8CF00BF51C4 /* CitySearchView.swift in Sources */,
+				5177C0BE2D3F04BB00BF51C4 /* ErrorView.swift in Sources */,
 				5177C0BC2D3F009E00BF51C4 /* WeatherValueStack.swift in Sources */,
 				5177C0B82D3EFD0E00BF51C4 /* Color+Extensions.swift in Sources */,
 			);
