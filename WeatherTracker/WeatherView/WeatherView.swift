@@ -42,5 +42,5 @@ struct WeatherView: View {
 }
 
 #Preview {
-    WeatherView(viewModel: WeatherViewModel(weatherProvider: WeatherProviderAPI()))
+    WeatherView(viewModel: WeatherViewModel(weatherProvider: WeatherProviderAPI(networkService: MockWeatherNetworkService())))
 }

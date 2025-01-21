@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct WeatherResponse: Codable {
+struct WeatherResponse: Codable, Equatable {
     let location: WeatherLocation
     let current: CurrentWeather
 }
 
-struct WeatherLocation: Codable {
+struct WeatherLocation: Codable, Equatable {
     let name: String
 }
 
-struct CurrentWeather: Codable {
+struct CurrentWeather: Codable, Equatable {
     let temp_c: Float
     let feelslike_c: Float
     let humidity: Int
@@ -24,9 +24,9 @@ struct CurrentWeather: Codable {
     let condition: Condition
 }
 
-struct Condition: Codable {
+struct Condition: Codable, Equatable {
     let text: String
     let icon: String
 }
 
-let TEST_WEATHER_RESPONSE = WeatherResponse(location: WeatherLocation(name: "Hyderabad"), current: CurrentWeather(temp_c: 31, feelslike_c: 38, humidity: 20, uv: 4, condition: Condition(text: "Partly cloudy", icon: "//cdn.weatherapi.com/weather/64x64/day/116.png")))
+let TEST_WEATHER_RESPONSE = WeatherResponse(location: WeatherLocation(name: "Denver"), current: CurrentWeather(temp_c: -8.3, feelslike_c: -13.1, humidity: 35, uv: 0.7, condition: Condition(text: "Partly cloudy", icon: "//cdn.weatherapi.com/weather/64x64/day/116.png")))

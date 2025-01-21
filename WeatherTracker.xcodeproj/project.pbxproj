@@ -27,6 +27,7 @@
 		5177C0BC2D3F009E00BF51C4 /* WeatherValueStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0BB2D3F009E00BF51C4 /* WeatherValueStack.swift */; };
 		5177C0BE2D3F04BB00BF51C4 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0BD2D3F04BB00BF51C4 /* ErrorView.swift */; };
 		5177C0C32D3F0B9200BF51C4 /* WeatherTrackerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0C22D3F0B9200BF51C4 /* WeatherTrackerText.swift */; };
+		5177C0EF2D3FFCF100BF51C4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177C0EE2D3FFCF100BF51C4 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		5177C0C22D3F0B9200BF51C4 /* WeatherTrackerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTrackerText.swift; sourceTree = "<group>"; };
 		5177C0EC2D3F0E4100BF51C4 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		5177C0ED2D3F0E5100BF51C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5177C0EE2D3FFCF100BF51C4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				5177C0962D3ECF4A00BF51C4 /* WeatherProviderAPI.swift */,
 				5177C09B2D3ED41400BF51C4 /* NetworkError.swift */,
+				5177C0EE2D3FFCF100BF51C4 /* NetworkService.swift */,
 			);
 			path = AppAPI;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				5177C09A2D3ED13100BF51C4 /* WeatherResponse.swift in Sources */,
 				5177C0AE2D3EE8DC00BF51C4 /* CitySearchCard.swift in Sources */,
 				5177C09C2D3ED41400BF51C4 /* NetworkError.swift in Sources */,
+				5177C0EF2D3FFCF100BF51C4 /* NetworkService.swift in Sources */,
 				5177C0A92D3EDF2200BF51C4 /* CityWeatherView.swift in Sources */,
 				5177C0AC2D3EE8CF00BF51C4 /* CitySearchView.swift in Sources */,
 				5177C0BE2D3F04BB00BF51C4 /* ErrorView.swift in Sources */,

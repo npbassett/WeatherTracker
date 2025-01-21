@@ -9,5 +9,6 @@ import Foundation
 
 enum NetworkError: String, Error {
     case invalidURL = "Invalid URL"
+    case failedToFetchData = "Failed to fetch data"
     case failedToDecodeData = "Failed to decode response data"
 }

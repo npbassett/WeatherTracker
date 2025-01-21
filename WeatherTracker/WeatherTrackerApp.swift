@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct WeatherTrackerApp: App {
-    @StateObject private var weatherViewModel = WeatherViewModel(weatherProvider: WeatherProviderAPI())
+    @StateObject private var weatherViewModel = WeatherViewModel(weatherProvider: WeatherProviderAPI(networkService: NetworkService()))
     
     var body: some Scene {
         WindowGroup {
